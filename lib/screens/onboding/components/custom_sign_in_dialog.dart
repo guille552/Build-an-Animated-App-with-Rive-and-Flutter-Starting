@@ -67,7 +67,7 @@ Future<Object?> customSigninDialog(BuildContext context, {required ValueChanged 
                         Expanded(child: Divider()),
                       ],
                     ),
-                    const Padding(
+                     const Padding(
                       padding: EdgeInsets.symmetric(vertical: 24),
                       child: Text(
                         "Sign Up with email, apple or google", 

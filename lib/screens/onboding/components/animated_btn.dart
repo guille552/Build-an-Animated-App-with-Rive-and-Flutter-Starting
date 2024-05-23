@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:rive/rive.dart';
 
-class animatedbtn extends StatelessWidget {
-  const animatedbtn({
+class Animatedbtn extends StatelessWidget {
+  const Animatedbtn({
     super.key,
     required RiveAnimationController btnAnimationController, required this.press,
   }) : _btnAnimationController = btnAnimationController;
