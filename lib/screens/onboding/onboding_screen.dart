@@ -1,11 +1,11 @@
 import 'dart:ui';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:rive/rive.dart';
 
 import 'components/animated_btn.dart';
+import 'components/sign_in_form.dart';
 
 class OnboardingScreen extends StatefulWidget {
   const OnboardingScreen({super.key});
@@ -15,14 +15,13 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-
   late RiveAnimationController _btnAnimationController;
 
   @override
   void initState() {
     _btnAnimationController = OneShotAnimation(
       "active",
-      autoplay: false, 
+      autoplay: false,
     );
     super.initState();
   }
@@ -33,12 +32,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       body: Stack(
         children: [
           Positioned(
-            //height: 100,
-            width: MediaQuery.of(context).size.width*1.7,
-            bottom: 200,
-            left: 100,
-            child: Image.asset("assets/Backgrounds/Spline.png")
-          ),
+              //height: 100,
+              width: MediaQuery.of(context).size.width * 1.7,
+              bottom: 200,
+              left: 100,
+              child: Image.asset("assets/Backgrounds/Spline.png")),
           Positioned.fill(
             child: BackdropFilter(
               filter: ImageFilter.blur(sigmaX: 20, sigmaY: 10),
@@ -62,17 +60,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     width: 260,
                     child: Column(
                       children: [
-                        Text("Learn design & code", 
+                        Text(
+                          "Learn design & code",
                           style: TextStyle(
-                            fontSize: 60, 
+                            fontSize: 60,
                             fontFamily: "Poppins",
                             height: 1.2,
                           ),
                         ),
-                        SizedBox(height: 16), 
+                        SizedBox(height: 16),
                         Text(
                           "Officia reprehenderit aliquip magna ea aute voluptate nulla tempor qui reprehenderit sit commodo non sit. Commodo nisi ea dolore eiusmod. Excepteur ut consectetur reprehenderit magna Lorem deserunt veniam anim voluptate amet. Sit nostrud elit occaecat eu enim culpa irure Lorem deserunt adipisicing. Dolore voluptate officia labore dolore Lorem in ullamco eu minim magna aute exercitation et. Id nostrud sunt in exercitation quis."
-                        )
+                        ),
                       ],
                     ),
                   ),
@@ -81,16 +80,58 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     btnAnimationController: _btnAnimationController,
                     press: () {
                       _btnAnimationController.isActive = true;
+                      showGeneralDialog(
+                        barrierDismissible: true,
+                        barrierLabel: "Sign in",
+                        context: context,
+                        pageBuilder: (context, _, __) => Center(
+                          child: Container(
+                            height: 620,
+                            margin: const EdgeInsets.symmetric(horizontal: 16),
+                            padding: const EdgeInsets.symmetric(vertical: 32, horizontal: 24,),
+                            decoration: BoxDecoration(
+                              color: Colors.white60.withOpacity(0.94),
+                                borderRadius:
+                                const BorderRadius.all(Radius.circular(40)
+                              )
+                            ),
+                            
+                            child: const Scaffold(
+                              backgroundColor: Colors.transparent,
+                              body: Column(
+                                children: [
+                                  Text("Sign in", 
+                                    style: TextStyle(
+                                      fontSize: 34, 
+                                      fontFamily: "Poppins",
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: EdgeInsets.symmetric(
+                                      vertical: 16),
+                                    child: Text(
+                                      "Ullamco irure labore aliqua est dolore ex culpa et. Ut mollit est esse laboris ea sint aute amet commodo elit aute tempor eiusmod aliqua. Amet deserunt id proident qui aute pariatur in. Eu anim mollit do sit sunt non ad anim commodo voluptate. Eiusmod eiusmod anim ad ea ea proident et dolor ut exercitation laboris.",
+                                      textAlign: TextAlign.center,
+                                    ),
+                                  ),
+                                  SignInForm()
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      );
                     },
                   ),
                   const Padding(
                     padding: EdgeInsets.symmetric(vertical: 24),
-                    child: Text("Sit Lorem sunt elit incididunt in in pariatur laboris non consectetur id nulla. Ad veniam ipsum laborum eiusmod consequat aute. Deserunt ipsum duis occaecat enim."),
-                  )
+                    child: Text(
+                    "Sit Lorem sunt elit incididunt in in pariatur laboris non consectetur id nulla. Ad veniam ipsum laborum eiusmod consequat aute. Deserunt ipsum duis occaecat enim."),
+                  ),
                 ],
               ),
-            )
-          )
+            ),
+          ),
         ],
       ),
     );

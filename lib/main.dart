@@ -4,7 +4,7 @@ import 'package:rive_animation/screens/onboding/onboding_screen.dart';
 void main() {
   runApp(const MyApp());
 }
-
+//Vamos a ejecutar la aplicación
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
