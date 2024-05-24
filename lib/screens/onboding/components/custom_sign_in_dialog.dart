@@ -45,9 +45,9 @@ Future<Object?> customSigninDialog(BuildContext context, {required ValueChanged 
                     ),
                     const Padding(
                       padding: EdgeInsets.symmetric(
-                        vertical: 16),
+                        vertical: 15),
                       child: Text(
-                        "Ullamco irure labore aliqua est dolore ex culpa et. Ut mollit est esse laboris ea sint aute amet commodo elit aute tempor eiusmod aliqua. Amet deserunt id proident qui aute pariatur in. Eu anim mollit do sit sunt non ad anim commodo voluptate. Eiusmod eiusmod anim ad ea ea proident et dolor ut exercitation laboris.",
+                        "Ullamco irure labore aliqua est dolore ex culpa et.",
                         textAlign: TextAlign.center,
                       ),
                     ),
