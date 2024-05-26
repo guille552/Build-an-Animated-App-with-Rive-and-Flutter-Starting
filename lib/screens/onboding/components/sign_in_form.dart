@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:rive/rive.dart';
+import 'package:rive_animation/utils/entry_point.dart';
+import 'package:rive_animation/utils/rive_utils.dart';
 
 class SignInForm extends StatefulWidget {
   const SignInForm({
@@ -24,13 +26,6 @@ class _SignInFormState extends State<SignInForm> {
 
   late SMITrigger confetti;
 
-  StateMachineController getRiveController(Artboard artboard) {
-    StateMachineController? controller =
-        StateMachineController.fromArtboard(artboard, "State Machine 1");
-    artboard.addController(controller!);
-    return controller;
-  }
-
   void signIn(BuildContext context) {
     setState(() {
       isShowLoading = true;
@@ -48,6 +43,13 @@ class _SignInFormState extends State<SignInForm> {
                 isShowLoading = false;
               });
               confetti.fire();
+              Future.delayed(Duration(seconds: 1), () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => EntryPoint(),
+                    ));
+              });
             },
           );
         } else {
@@ -147,31 +149,36 @@ class _SignInFormState extends State<SignInForm> {
             ],
           ),
         ),
-        isShowLoading ? CustomPositioned(
-          child: RiveAnimation.asset(
-            "assets/RiveAssets/check.riv",
-            onInit: (artboard) {
-              StateMachineController controller =
-                  getRiveController(artboard);
-              check = controller.findSMI("Check") as SMITrigger;
-              error = controller.findSMI("Error") as SMITrigger;
-              reset = controller.findSMI("Reset") as SMITrigger;
-            },
-          ),
-        ): const SizedBox(),
-
-        isShowConfetti ? CustomPositioned(
-          child: Transform.scale(
-            scale: 7,
-            child: RiveAnimation.asset(
-              "assets/RiveAssets/confetti.riv",
-              onInit: (artboard) {
-                StateMachineController controller =getRiveController(artboard);
-                confetti = controller.findSMI("Trigger explosion") as SMITrigger;
-              },
-            ),
-          ),
-        ): SizedBox(),
+        isShowLoading
+            ? CustomPositioned(
+                child: RiveAnimation.asset(
+                  "assets/RiveAssets/check.riv",
+                  onInit: (artboard) {
+                    StateMachineController controller =
+                        RiveUtils.getRiveController(artboard);
+                    check = controller.findSMI("Check") as SMITrigger;
+                    error = controller.findSMI("Error") as SMITrigger;
+                    reset = controller.findSMI("Reset") as SMITrigger;
+                  },
+                ),
+              )
+            : const SizedBox(),
+        isShowConfetti
+            ? CustomPositioned(
+                child: Transform.scale(
+                  scale: 7,
+                  child: RiveAnimation.asset(
+                    "assets/RiveAssets/confetti.riv",
+                    onInit: (artboard) {
+                      StateMachineController controller =
+                          RiveUtils.getRiveController(artboard);
+                      confetti =
+                          controller.findSMI("Trigger explosion") as SMITrigger;
+                    },
+                  ),
+                ),
+              )
+            : SizedBox(),
       ],
     );
   }
