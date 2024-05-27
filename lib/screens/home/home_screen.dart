@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:flutter/widgets.dart';
+import 'package:rive_animation/screens/home/components/course_card.dart';
+
+import '../../model/course.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -20,33 +23,16 @@ class HomeScreen extends StatelessWidget {
                     .copyWith(color: Colors.black, fontWeight: FontWeight.w600),
               ),
             ),
-            Container(
-              height: 280,
-              width: 260,
-              decoration: BoxDecoration(
-                color: Color(0xFF80A4FF),
-                borderRadius: BorderRadius.all(
-                  Radius.circular(30),
-                ),
-              ),
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
               child: Row(
                 children: [
-                  Expanded(
-                    child: Column(
-                      children: [
-                        Text(
-                          "Animations in SwiftUI",
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w600),
-                        )
-                      ],
-                    ),
-                  ),
-                  SvgPicture.asset("assets/icons/ios.svg")
+                  ...courses
+                      .map((course) => Padding(
+                            padding: const EdgeInsets.only(left: 20),
+                            child: CourseCard(course: course),
+                          ))
+                      .toList(),
                 ],
               ),
             )
