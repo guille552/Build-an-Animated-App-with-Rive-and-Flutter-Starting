@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:rive_animation/screens/home/components/side_menu.dart';
+import 'package:rive_animation/screens/home/home_screen.dart';
+import 'package:rive_animation/screens/onboding/components/sign_in_form.dart';
 import 'package:rive_animation/screens/onboding/onboding_screen.dart';
-import 'package:rive_animation/utils/entry_point.dart';
 
 void main() {
   runApp(const MyApp());
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
           errorBorder: defaultInputBorder,
         ),
       ),
-      home: const EntryPoint(),
+      home: const OnboardingScreen(),
     );
   }
 }
