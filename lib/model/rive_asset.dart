@@ -35,3 +35,45 @@ List<RiveAsset> bottomNavs = [
       stateachineName: "USER_Interactivity",
       title: "Profile"),
 ];
+
+List<RiveAsset> sideMenus = [
+  RiveAsset(
+    "assets/RiveAssets/icons.riv",
+    artboard: "HOME",
+    stateachineName: "HOME_interactivity",
+    title: "Home",
+  ),
+  RiveAsset(
+    "assets/RiveAssets/icons.riv",
+    artboard: "SEARCH",
+    stateachineName: "SEARCH_Interactivity",
+    title: "Search",
+  ),
+  RiveAsset(
+    "assets/RiveAssets/icons.riv",
+    artboard: "LIKE/STAR",
+    stateachineName: "STAR_Interactivity",
+    title: "Favorites",
+  ),
+  RiveAsset(
+    "assets/RiveAssets/icons.riv",
+    artboard: "CHAT",
+    stateachineName: "CHAT_Interactivity",
+    title: "Help",
+  ),
+];
+
+List<RiveAsset> sideMenu2 = [
+  RiveAsset(
+    "assets/RiveAssets/icons.riv",
+    artboard: "TIMER",
+    stateachineName: "TIMER_Interactivity",
+    title: "History",
+  ),
+  RiveAsset(
+    "assets/RiveAssets/icons.riv",
+    artboard: "BELL",
+    stateachineName: "BELL_Interactivity",
+    title: "Notification",
+  ),
+];

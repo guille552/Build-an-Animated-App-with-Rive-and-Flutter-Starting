@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:rive_animation/screens/home/components/side_menu.dart';
 import 'package:rive_animation/screens/onboding/onboding_screen.dart';
+import 'package:rive_animation/utils/entry_point.dart';
 
 void main() {
   runApp(const MyApp());
 }
+
 //Vamos a ejecutar la aplicación
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -27,7 +30,7 @@ class MyApp extends StatelessWidget {
           errorBorder: defaultInputBorder,
         ),
       ),
-      home: const OnboardingScreen(),
+      home: const EntryPoint(),
     );
   }
 }
